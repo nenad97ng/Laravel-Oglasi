@@ -19,4 +19,5 @@ class CategoryFactory extends Factory
             'parent_id' => $this->faker->numerify('#')
         ];
     }
+
 }
