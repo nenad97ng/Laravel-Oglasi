@@ -18,12 +18,15 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'slug' => $this->faker->slug(),
+            'slug' => $this->faker->unique()->slug(),
             'description' => $this->faker->text(),
+            'product_condition' => $this->faker->randomElement(['Novo', 'Polovno']),
             'price' => $this->faker->numerify('##'),
+            'phonenumber' => $this->faker->unique()->numerify('065#######'),
+            'address' => $this->faker->address(),
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
-            'product_picture' => 'public/storage/images',
+            'product_picture' => 'public/product_pictures/1RQPB8mcWDY15A3wBw83A2OyZyn9J14DXVQF27u9.png',
 
         ];
     }

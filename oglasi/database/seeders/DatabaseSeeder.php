@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'John Doe'
         // ]);
         // Category::factory(5)->create([]);
-        Product::factory(5)->create([]);
+        Product::factory(50)->create([]);
     }
 }

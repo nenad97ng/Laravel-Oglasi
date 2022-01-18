@@ -10,10 +10,14 @@ class CategoryController extends Controller
     public function createCategory(Request $request)
     {
         $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
+
+
         if($request->method()=='GET')
         {
-            return view('create-category', compact('categories'));
+            return view('user.products.create', compact('categories'));
         }
+
+
         if($request->method()=='POST')
         {
             $validator = $request->validate([
@@ -31,4 +35,5 @@ class CategoryController extends Controller
             return redirect()->back()->with('success', 'Category has been created successfully.');
         }
     }
+
 }

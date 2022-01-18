@@ -17,10 +17,13 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('description');
+            $table->text('description');
+            $table->string('product_condition');
             $table->decimal('price');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id');
+            $table->string('phonenumber')->unique();
+            $table->string('address');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->string('product_picture')->nullable();
             $table->timestamps();
         });

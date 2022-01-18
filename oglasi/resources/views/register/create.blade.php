@@ -6,15 +6,13 @@
 
             <form method="POST" action="/register" class="mt-10">
                 @csrf
-
+                <x-form.input name="username"></x-form.input>
                 <x-form.input name="name"></x-form.input>
-
+                <x-form.input name="profile_picture" type="file" />
+                <x-form.input name="email" type="email" />
+                <x-form.input name="password" type="password" />
+                <x-form.button>Submit</x-form.button>
             </form>
-
-
-
-
-
 
           </main>
         </section>

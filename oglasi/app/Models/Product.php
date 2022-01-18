@@ -11,8 +11,26 @@ class Product extends Model
 
     protected $with = ['category', 'author'];
 
+    public function scopeFilter($query, array $filters)   // Post::newQuery()->filter()
+    {
+       $query->when($filters['search'] ?? false, fn ($query, $search) => $query
+                ->where(fn($query) =>
+                $query->where('name', 'like', '%' . $search . '%' )
+               ->orWhere('description', 'like', '%' . $search . '%' )));
 
+               $query->when($filters['category'] ?? false, fn ($query, $category) =>
+               $query->whereHas('category', fn($query) =>
+                $query->where('slug', $category)
+            )
+        );
 
+        $query->when($filters['author'] ?? false, fn ($query, $author) =>
+               $query->whereHas('author', fn($query) =>
+                $query->where('username', $author)
+            )
+        );
+
+    }
 
 
     public function category()
